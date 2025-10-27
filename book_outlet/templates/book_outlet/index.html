@@ -7,8 +7,15 @@
     <p>Your one-stop shop for all your book needs!</p>
 
     <ul> 
-        <li>hello</li>
-        <li>nnnnn</li>
-        <li>ooooo</li>
+    {% for book in books %}
+        <li>
+            <a href="{% url 'book_detail' book.id %}">
+                <strong>{{ book.title }}</strong> by {{ book.author }} - ${{ book.price }} - Rating: {{ book.rating }}/5
+                {% if book.is_best_seller %}
+                    <em>(Best Seller)</em>
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
     </ul>
 {% endblock %}
