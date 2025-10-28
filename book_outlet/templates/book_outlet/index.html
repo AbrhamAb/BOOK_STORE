@@ -9,7 +9,7 @@
     <ul> 
     {% for book in books %}
         <li>
-            <a href="{% url 'book_detail' book.id %}">
+            <a href="{% url 'book_detail' book.slug %}">
                 <strong>{{ book.title }}</strong> by {{ book.author }} - ${{ book.price }} - Rating: {{ book.rating }}/5
                 {% if book.is_best_seller %}
                     <em>(Best Seller)</em>
