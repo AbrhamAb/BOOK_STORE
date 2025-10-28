@@ -1,14 +1,17 @@
-{% extends 'book_outlet/base.html' %} 
+{% extends "book_outlet/base.html" %}
 
-{% block title %}{{ book.title }} - Book Outlet{% endblock %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
 {% block content %}
-    <h1>{{ book.title }}</h1>
-    <p><strong>Author:</strong> {{ book.author }}</p>
-    <p><strong>Price:</strong> ${{ book.price }}</p>
-    <p><strong>Rating:</strong> {{ book.rating }}/5</p>
-    {% if book.is_best_seller %}
-        <p><em>This book is a Best Seller!</em></p>
-    {% endif %}
-    <p><strong>Published Date:</strong> {{ book.published_date }}</p>
-    <p><strong>ISBN Number:</strong> {{ book.isbn_number }}</p>
+  <h1>{{ title }}</h1>
+  <h2>{{ author }}</h2>
+  <p>The book has a rating of {{ rating }} 
+  {% if is_bestseller %}
+    and is a bestseller.
+  {% else %}
+    but isn't a bestseller.
+  {% endif %}
+  </p>
 {% endblock %}

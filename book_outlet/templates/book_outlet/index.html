@@ -1,21 +1,18 @@
-{% extends 'book_outlet/base.html' %}
+{% extends "book_outlet/base.html" %}
 
-{% block title %}Book Outlet{% endblock %}
+{% block title %}
+  All Books
+{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Book Outlet</h1>
-    <p>Your one-stop shop for all your book needs!</p>
-
-    <ul> 
+  <ul>
     {% for book in books %}
-        <li>
-            <a href="{% url 'book_detail' book.slug %}">
-                <strong>{{ book.title }}</strong> by {{ book.author }} - ${{ book.price }} - Rating: {{ book.rating }}/5
-                {% if book.is_best_seller %}
-                    <em>(Best Seller)</em>
-                {% endif %}
-            </a>
-        </li>
+      <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a> (Rating: {{ book.rating }})</li>
     {% endfor %}
-    </ul>
+  </ul>
+
+  <hr>
+
+  <p>Total Number Of Books: {{ total_number_of_books }}</p>
+  <p>Average Rating: {{ average_rating.rating__avg }}</p>
 {% endblock %}
