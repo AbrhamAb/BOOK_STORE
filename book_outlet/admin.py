@@ -6,7 +6,8 @@ from .models import Book
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name",)
-    
+
+
 class BookAdmin(admin.ModelAdmin):
   prepopulated_fields = {"slug": ("title",)}
   list_filter = ("author", "rating",)
